@@ -9,14 +9,13 @@
 // Шаг 3: Если ключевой элемент найден, верните позицию индекса элемента массива.
 // Шаг 4: Если ключевой элемент не найден, верните -1
 
-function linearSearch(searchElement, arr) {
-  result = -1;
-  arr.forEach(elementArray => {
+function linearSearch(searchElement, array) {
+  array.forEach(elementArray => {
     if (elementArray === searchElement) {
-      result = array.indexOf(elementArray);
+      return array.indexOf(elementArray);
     }
   });
-  return result;
+  return -1;
 }
 
 // 2. Find the element that appears once in a sorted array
@@ -32,14 +31,11 @@ function linearSearch(searchElement, arr) {
 // Шаг 5: Исправить ошибку ArrayIndexOutOfBoundsException
 
 function searchOneElement(arr) {
-  let result = -1;
   for (let i = 1; i < arr.length - 1; i = i + 2) {
     if (arr[i] !== arr[i - 1]) {
-      result = arr[i];
-      return result;
+      return arr[i];
+    } else {
+      return -1;
     }
-  }
-  if (result === -1) {
-    return result;
   }
 }

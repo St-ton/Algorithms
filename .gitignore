@@ -1,3 +1,7 @@
+Kurs_UlbiTV/
+Old/
+.gitignore
 *.docx
 *.xlsx
 *.txt
+*.pdf

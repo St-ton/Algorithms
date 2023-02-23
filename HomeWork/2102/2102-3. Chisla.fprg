@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="3.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="StanislavT"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2023-02-23 01:14:07 "/>
+        <attribute name="created" value="U3RhbmlzbGF2VDtTVEFOSVNMQVZUOzIwMjMtMDItMjE7IjA0OjE3OjE2ICI7Mjk5Ng=="/>
+        <attribute name="edited" value="U3RhbmlzbGF2VDtTVEFOSVNMQVZUOzIwMjMtMDItMjM7IjAxOjE0OjA3ICI7NjszMTA1"/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <comment text="&#1053;&#1072; &#1087;&#1088;&#1086;&#1084;&#1077;&#1078;&#1091;&#1090;&#1082;&#1077; &#1086;&#1090; 1 &#1076;&#1086; N, &#1087;&#1086;&#1082;&#1072;&#1079;&#1072;&#1090;&#1100; &#1082;&#1091;&#1073;&#1099; &#1095;&#1080;&#1089;&#1077;&#1083;, &#1079;&#1072;&#1082;&#1072;&#1085;&#1095;&#1080;&#1074;&#1072;&#1102;&#1097;&#1080;&#1093;&#1089;&#1103; &#1085;&#1072; &#1095;&#1077;&#1090;&#1085;&#1091;&#1102; &#1094;&#1080;&#1092;&#1088;&#1091; "/>
+            <declare name="N, result, index" type="Integer" array="False" size=""/>
+            <input variable="N"/>
+            <assign variable="index" expression="1"/>
+            <while expression="index &lt;= N">
+                <assign variable="result" expression="index * index * index"/>
+                <if expression="result % 3 ==0">
+                    <then>
+                        <output expression="result" newline="True"/>
+                    </then>
+                    <else/>
+                </if>
+                <assign variable="index" expression="index+1"/>
+            </while>
+        </body>
+    </function>
+</flowgorithm>

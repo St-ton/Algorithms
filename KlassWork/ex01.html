@@ -1,0 +1,28 @@
+<script>
+
+  class Foo {
+    constructor() {
+      this.storage = [];
+    }
+  }
+
+  let f = new Foo();
+
+  document.write(`${f.storage}<br>`)
+  f.storage.push({ id: 1, age: 22, salary: 222, fullName: "John 1" });
+  f.storage.push({ id: 2, age: 45, salary: 2222, fullName: "John 2" });
+
+
+  document.write(`${f.storage}<br>`)
+  f.storage.push({ id: 3, age: 22, salary: 444, fullName: "John 3" });
+
+
+  document.write(`${f.storage}<br>`)
+  document.write(`${f.storage.shift().fullName}<br>`)
+  document.write(`${f.storage.shift().fullName}<br>`)
+
+  f.storage.push({ id: 4, age: 28, salary: 123, fullName: "John 5" });
+
+  document.write(`${f.storage}<br>`)
+
+</script>

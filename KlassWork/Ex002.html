@@ -1,0 +1,46 @@
+<!--// Стихийный
+// Процедурный
+// ООП
+// КОП
+// ПОР
+-->
+<script>
+
+  class Worker {
+    constructor(id, age, salary, firstName, lastName) {
+      this.id = id;
+      this.age = age;
+      this.salary = salary;
+      this.firstName = firstName;
+      this.lastName = lastName;
+
+      this.getInfo = () => {
+        document.write(`id: ${this.id} First Name: ${this.firstName} <br>`);
+      };
+    }
+  }
+
+  class Repository {
+    constructor() {
+      this.storage = [];
+      this.append = (item) => { this.storage.push(item); };
+      this.printStorage = () => { this.storage.forEach(e => e.getInfo()); };
+    }
+  }
+
+  let it = new Repository();
+  it.append(new Worker(1, 22, 1000, "John 2", "Dou 34"));
+  it.append(new Worker(2, 25, 1000, "John 21", "Dou 42"));
+  it.append(new Worker(3, 29, 1000, "John 13", "Dou 31"));
+
+  let cons = new Repository();
+  cons.append(new Worker(1, 22, 1000, "John 112", "Dou 1134"));
+  cons.append(new Worker(2, 25, 1000, "John 1121", "Dou 1142"));
+  cons.append(new Worker(3, 29, 1000, "John 1113", "Dou 1131"));
+
+  it.printStorage();
+  document.write("==<br>");
+  cons.printStorage();
+
+
+</script>

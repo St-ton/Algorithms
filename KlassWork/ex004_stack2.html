@@ -1,0 +1,51 @@
+<script>
+  class MyStack {
+    constructor(n) {
+      this.storage = Array(n);
+      this.tail = 0;
+      // this.push = (item) => { this.storage[this.tail++] = item; };
+    }
+
+    push(item) {
+      if (this.tail < this.storage.length)
+        this.storage[this.tail++] = item;
+    }
+
+    pop() {
+      if (this.tail > 0) {
+        let t = this.storage[--this.tail];
+        this.storage[this.tail] = '';
+        return t;
+      }
+      else {
+        return "stack is empty";
+      }
+    }
+
+    peek() {
+      return this.storage[this.tail - 1];
+    }
+
+    isEmpty() {
+      return this.tail == 0;
+    }
+  }
+
+  let ms = new MyStack(111);
+
+  ms.push(1);
+  ms.push(2);
+  ms.push(3);
+
+  document.write(`stack => ${ms.storage}<br>`);
+  document.write(`${ms.pop()}<br>`);
+  document.write(`${ms.pop()}<br>`);
+  document.write(`ms.isEmpty() => ${ms.isEmpty()}<br>`);
+
+  document.write(`${ms.pop()}<br>`);
+  document.write(`${ms.pop()}<br>`);
+  document.write(`${ms.pop()}<br>`);
+  document.write(`stack => ${ms.storage}<br>`);
+  document.write(`ms.isEmpty() => ${ms.isEmpty()}<br>`);
+
+</script>

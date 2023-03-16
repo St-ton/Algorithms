@@ -1,0 +1,23 @@
+<script>
+  //          1  2  3  4  5  6
+  let cube = [0, 0, 0, 0, 0, 0];
+  //          0  1  2  3  4  5
+  let n = 100000;
+  for (let i = 0; i < n; i++) {
+    //let roll = Math.floor(Math.random() * 6);
+    let roll = Math.floor(Math.random() * 20);
+    if (roll < 10) roll = 0;
+    if (roll >= 10 && roll < 15) roll = 1;
+    if (roll >= 15 && roll < 17) roll = 2;
+    if (roll >= 17 && roll < 18) roll = 3;
+    if (roll >= 18 && roll < 19) roll = 4;
+    if (roll >= 19 && roll < 20) roll = 5;
+    cube[roll]++;
+  }
+  document.write(`<br>`);
+
+  for (let i = 0; i < cube.length; i++) {
+    document.write(`${i + 1}: ${cube[i]} %:${cube[i] / n * 100}<br>`);
+  }
+  document.write(`${cube}`);
+</script>

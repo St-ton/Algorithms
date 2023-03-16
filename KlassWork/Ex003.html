@@ -1,0 +1,14 @@
+<script>
+  let arr = [2, 5, 1, 6, 17, "0"];
+  document.write(`${arr}<br>`);
+  arr.sort()
+  document.write(`${arr}<br>`);
+
+
+  arr.sort((x, y) => x - y);
+  document.write(`${arr}<br>`);
+
+  arr.sort((y, x) => x - y);
+  document.write(`${arr}<br>`);
+
+</script>

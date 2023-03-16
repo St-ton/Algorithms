@@ -1,0 +1,40 @@
+<script>
+
+
+  let storage = Array(10);
+  let tail = 0;
+
+  function push(item) {
+    storage[tail++] = item;
+  }
+  function pop() {
+    let t = storage[--tail];
+    storage[tail] = '';
+    return t;
+  }
+
+  function peek() {
+    return storage[tail - 1];
+  }
+
+  push(1);
+  push(2);
+  push(3);
+
+  document.write(`stack => ${storage.join(' ')}<br>`);
+
+  document.write(`pop -> ${pop()}<br>`);
+  document.write(`stack => ${storage.join(' ')}<br>`);
+
+  document.write(`pop -> ${pop()}<br>`);
+  document.write(`stack => ${storage.join(' ')}<br>`);
+  push(11);
+  push(12);
+  document.write(`stack => ${storage.join(' ')}<br>`);
+  document.write(`pop -> ${pop()}<br>`);
+  document.write(`stack => ${storage.join(' ')}<br>`);
+  document.write(`peek -> ${peek()}<br>`);
+
+  document.write(`stack => ${storage.join(' ')}<br>`);
+
+</script>

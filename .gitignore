@@ -1,8 +1,8 @@
 Kurs_UlbiTV/
-
 Old/
 .gitignore
 *.docx
+*.doc*
 *.xlsx
 *.txt
 *.pdf

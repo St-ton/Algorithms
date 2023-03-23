@@ -1,0 +1,23 @@
+<script>
+  function merge(left, right) {
+    let temp = []
+    while (left.length && right.length)
+      if (left[0] < right[0]) temp.push(left.shift())
+      else temp.push(right.shift())
+    return [...temp, ...left, ...right]
+  }
+
+  function mergeSort(numbers) {
+    let middle = numbers.length / 2;
+    if (numbers.length < 2) return numbers;
+
+    let left = numbers.splice(0, middle);
+    return merge(mergeSort(left), mergeSort(numbers))
+  }
+
+  let col = [1, 5, 1, 9, 9, 4, 10, 1];
+
+  document.write(`${col}<br>`);
+  document.write(mergeSort(col) + "<br>");
+  document.write("end");
+</script>

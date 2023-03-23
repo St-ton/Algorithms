@@ -1,0 +1,43 @@
+<script>
+  function getElementTwoSortedArrays(numbers1, numbers2, key) {
+    let m = numbers1.length;
+    let n = numbers2.length;
+    let i = 0, j = 0, d = 0;
+    let sorted = Array(m + n).fill(0);
+
+    while (i < m && j < n) {
+      if (numbers1[i] < numbers2[j]) sorted[d++] = numbers1[i++];
+      else sorted[d++] = numbers2[j++];
+    }
+    while (i < m) sorted[d++] = numbers1[i++];
+    while (j < n) sorted[d++] = numbers2[j++];
+
+    return sorted[key];
+  }
+
+  function getInteger(min, max) {
+    return Math.floor(Math.random() * (max - min) + min);
+  }
+
+  const comp = (x, y) => x - y;
+
+  const minValue = 10;
+  const maxValue = 100;
+
+  const a = Array.from({ length: getInteger(4, 8) },
+    (_, i) => getInteger(minValue, maxValue)).sort(comp);
+  document.write(`a = ${a}<br>`);
+
+  const b = Array.from({ length: getInteger(5, 7) },
+    (_, i) => getInteger(minValue, maxValue)).sort(comp);
+  document.write(`a = ${b}<br>`);
+
+  const r = a.concat(b).sort(comp);
+  const k = getInteger(0, r.length);
+
+  document.write(`k = ${k}<br>`);
+  document.write(`r = ${r}<br>`);
+  document.write(`${getElementTwoSortedArrays(a, b, k)} << get obtained<br>`);
+  document.write(`${r[k]} << expected<br>`);
+  document.write(`+`);
+</script>

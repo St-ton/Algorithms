@@ -1,0 +1,51 @@
+<script>
+
+  var show = true;
+
+  function mergeSort(arr, gen, sp = "") {
+    if (arr.length < 2) {
+      if (show)
+        document.write(` ${sp} <font color='blue'>${gen}</font> [${arr}]  <font color='gray' size='1'>arr</font><br>`);
+      return arr;
+    }
+
+    const mid = Math.floor(arr.length / 2);
+    const left = arr.slice(0, mid);
+    const right = arr.slice(mid);
+
+    if (show) {
+      document.write(` ${sp} <font color='blue'>${gen}</font> [${left}] <font color='green' size='1'>left</font><br>`);
+      document.write(` ${sp} <font color='blue'>${gen}</font> [${right}] <font color='blue' size='1'>right</font><br>`);
+    }
+
+    return merge(mergeSort(left, gen + 1, sp + "  "), mergeSort(right, gen + 1, sp + "  "), gen, sp = "  ");
+  }
+
+  function merge(left, right, gen, sp) {
+    const result = [];
+
+    while (left.length && right.length) {
+      if (left[0] <= right[0]) result.push(left.shift());
+      else result.push(right.shift());
+    }
+
+    while (left.length) result.push(left.shift());
+    while (right.length) result.push(right.shift());
+
+    if (show)
+      document.write(` ${sp} <font color='blue'>${gen}</font> [${result}] <font color='red' size='1'>result</font><br>`);
+
+    return result;
+  }
+
+  // const arr = [5, 8, 3, 6, 1, 9, 2, 7, 4];
+  // console.log("MergeSort");
+  // console.log(mergeSort(arr));
+
+  let a = [38, 27, 43, 3, 9, 82, 10];
+  document.write(`a = ${a}<br>`);
+
+  let generation = 1;
+  document.write(`${mergeSort(a, generation)} << mergeSort<br>`);
+  document.write(`${a.sort((x, y) => x - y)} << expected<br>`);
+</script>

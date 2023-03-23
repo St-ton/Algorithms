@@ -1,0 +1,87 @@
+<script>
+
+
+  function swap(arr, i, j) {
+    let t = arr[i];
+    arr[i] = arr[j];
+    arr[j] = t;
+  }
+
+  function helperP(arr, start, end) {
+    p = arr[end];
+    let i = start;
+    let j;
+    for (j = start; j <= end - 1; j++) {
+      if (arr[j] < p) {
+        swap(arr, i, j);
+        i++;
+      }
+    }
+    swap(arr, i, j);
+    return i;
+  }
+
+  //+
+  function quickSort(arr, start, end) {
+    if (start < end) {
+      let p = helperP(arr, start, end);
+      quickSort(arr, start, p - 1);
+      quickSort(arr, p + 1, end);
+    }
+  }
+
+  function check(arr1, arr2) {
+    let size = arr1.length;
+    for (let i = 0; i < size; i++) {
+      if (arr1[i] !== arr2[i]) return false;
+    }
+    return true;
+  }
+
+  function getInteger(min, max) {
+    return Math.floor(Math.random() * (max - min) + min);
+  }
+
+  function generateArray(count) {
+    let arr = [];
+    for (let i = 0; i < count; i++) {
+      arr.push(getInteger(0, 20));
+    }
+    return arr;
+  }
+
+  function arrayClone(arr) {
+    let copy;
+
+    if (Array.isArray(arr)) {
+      copy = arr.slice(0);
+      for (let i = 0; i < copy.length; i++) {
+        copy[i] = arrayClone(copy[i]);
+      }
+      return copy;
+    } else if (typeof arr === 'object') {
+      throw 'Cannot clone array containing an object!';
+    } else {
+      return arr;
+    }
+  }
+
+
+  let col = [4, 2, 6, 1, 6];
+  document.write(col + "<br>");
+  quickSort(col, 0, col.length - 1);
+  document.write(col);
+
+
+  // // let col = [7, -2, 4, 1, 6, 5, 0, -4, 2];
+  // let source = generateArray(20);
+  // let col = arrayClone(source);
+  // document.write(source + " – source<br>");
+
+  // quickSort(col, 0, col.length - 1);
+  // document.write(col + " – col<br>");
+  // let sorted = source.sort((x, y) => x - y);
+  // document.write(sorted + " – sorted<br>");
+
+  // document.write(check(col, sorted) + " – check");
+</script>

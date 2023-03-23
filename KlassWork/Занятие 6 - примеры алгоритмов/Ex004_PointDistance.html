@@ -1,0 +1,86 @@
+<script>
+  let MAX_ROW_VALUE = 40;
+  let MAX_COLUMN_VALUE = 280;
+
+  class Point2D {
+    constructor(id, x, y) {
+      this.id = id;
+      this.x = x;
+      this.y = y;
+    }
+    getInfo() { return `[id = ${this.id}, x = ${this.x},  y = ${this.y}] <br>`; }
+  }
+
+  function distance2d(a, b) {
+    return Math.sqrt(Math.pow(a.x - b.x, 2) + Math.pow(a.y - b.y, 2));
+  }
+
+  function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+  }
+
+  function randomPoint(id) {
+    return new Point2D(id,
+      getRandomInt(MAX_ROW_VALUE),
+      getRandomInt(MAX_COLUMN_VALUE)
+    );
+  }
+
+  function drawColor(image, p1, p2) {
+    // alert(p1);
+    for (let row = 0; row < image.length; row++) {
+      for (let column = 0; column < image[row].length; column++) {
+        let p = image[row][column];
+        if (
+          p1.x === row && p1.y === column
+          || p2.x === row && p2.y === column
+        ) { document.write("<font color='blue'>x</font>"); }
+
+        else if (p === 0) { document.write(" "); }
+        else if (p === 1) { document.write("<font color='silver'>+</font>"); }
+        else { document.write("+"); }
+      }
+      document.write("<br>");
+    }
+    document.write("<br>");
+  }
+
+  function minDistanceBad(points) {
+    let result = [MAX_ROW_VALUE + MAX_COLUMN_VALUE + 1, -1, -1];
+
+    for (let i = 0; i < points.length; i++) {
+      for (let j = i + 1; j < points.length; j++) {
+        if (result[0] > distance2d(points[i], points[j])) {
+          result = [distance2d(points[i], points[j]), points[i].id, points[j].id];
+        }
+      }
+    }
+    return result;
+  }
+
+  let image = Array.from(
+    { length: MAX_ROW_VALUE }, (_, i) => Array.from(
+      { length: MAX_COLUMN_VALUE }, (_, k) => 0));
+
+
+  let points = [];
+
+  for (let i = 0; i < 30; i++) {
+    points.push(randomPoint(i));
+  }
+
+  // points.sort((a, b) => a.x - b.x);
+
+  for (let index = 0; index < points.length; index++) {
+    const p = points[index];
+    image[p.x][p.y] = 1;
+    document.write(p.getInfo());
+  }
+
+  let tuple = minDistanceBad(points);
+  document.write("<br>" + tuple[0] + "<br>");
+  document.write(tuple[1] + "<br>");
+  document.write(tuple[2] + "<br>");
+  //drawColor(image, points[tuple[1]], points[tuple[2]]);
+
+</script>

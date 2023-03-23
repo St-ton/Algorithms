@@ -1,0 +1,54 @@
+<script>
+
+  function quickSort(array, startIndex, endIndex) {
+    if (startIndex < endIndex) {
+      let pivot = helperPivot(array, startIndex, endIndex)
+      document.write(` > > > startIndex: ${startIndex} pivot - 1:${pivot - 1} <br>`);
+      quickSort(array, startIndex, pivot - 1)
+      document.write(` > > > pivot + 1: ${pivot + 1} endIndex:${endIndex} <br>`);
+      quickSort(array, pivot + 1, endIndex)
+    }
+  }
+
+  function helperPivot(array, start, end) {
+    document.write(" array helperPivot > " + array + "<br>");
+
+    let pivot = array[end]
+    document.write(" pivot > " + pivot + "<br>");
+    document.write(" start > " + start + "<br>");
+    document.write(" end > " + end + "<br>");
+
+    let i = start
+    let j;
+    for (j = start; j < end; j++) {
+      document.write(`${j}` + " for array helperPivot > " + array + "<br>");
+      if (array[j] < pivot) {
+        swap(array, i, j);
+        document.write(` swap ${array[i]} ${array[j]}<br>`);
+        document.write(`${j}` + " for array helperPivot > " + array + "<br>");
+        i++;
+      }
+    }
+    document.write(` pred return swap [i:${i} j:${j}] ${array[i]} ${array[j]}<br>`);
+    swap(array, i, j);
+
+    document.write("  ++ return array helperPivot > " + array + "<br>");
+
+    return i;
+  }
+
+  function swap(array, index1, index2) {
+    let temp = array[index1];
+    array[index1] = array[index2];
+    array[index2] = temp
+  }
+
+  //let col = [2, -2, 4, 1, -4, 7, 6, 5, 0]
+  let col = [2, 1, 4, 3];
+  document.write(col + " start <br>");
+  quickSort(col, 0, col.length - 1)
+  document.write(col + " finish <br>");
+
+
+
+</script>

@@ -1,0 +1,18 @@
+<script>
+
+  function fib(n) {
+    if (n <= 1) { return n; }
+    else {
+      let a = fib(parseInt((n + 1) / 2));
+      let b = fib(parseInt((n + 1) / 2 - 1));
+
+      if (n % 2 === 1) { return a * a + b * b; }
+      else { return a * a + 2 * a * b; }
+    }
+  }
+
+  for (let i = 0; i < 40; i++) {
+    document.write(`F(${i})=${fib(i)}<br>`)
+  }
+
+</script>
